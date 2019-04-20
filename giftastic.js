@@ -17,10 +17,11 @@ $(document).on("click", ".topicButton", function(){
   console.log(type);
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         type + "&api_key=wPflYfEU0Wdut2iOW1BMYDVAlLNcLqPD&limit=10";
-
+// ajax call
   $.ajax({
     url: queryURL,
     method: "GET"
+    // main function
   }).then(function(response){
       console.log(response);
       for (var i = 0; i < response.data.length; i++) {
@@ -41,7 +42,7 @@ $(document).on("click", ".topicButton", function(){
       }
 
 });  
-
+// make gifs move and pause
 })
 $(document).on('click', '.searchImage', function(){
     let state = $(this).attr('data-state');
@@ -53,10 +54,11 @@ $(document).on('click', '.searchImage', function(){
         $(this).attr('data-state', 'still');
     }
 })
-
+// main search on click plus populate with the new topic button
 $('#submit').on('click', function(){
     let newTopic = $("#search-input").val().trim()
     topics.push(newTopic);
     makeButtons();
     return false
 })
+
